@@ -21,7 +21,7 @@ done
 
 if [[ -z "$IMAGE" || "$IMAGE" == "controller:latest" ]]; then
   echo "Set IMAGE to an image reachable by every cluster node." >&2
-  echo "Example: IMAGE=registry.local/aijob-operator:v0.1.0 ./scripts/deploy.sh" >&2
+  echo "Example: IMAGE=registry.local/aijob-operator:v0.1.0 bash scripts/deploy.sh" >&2
   exit 1
 fi
 if [[ ! "$MIN_GPU_PER_NODE" =~ ^[0-9]+$ ]] || (( MIN_GPU_PER_NODE < 1 )); then
