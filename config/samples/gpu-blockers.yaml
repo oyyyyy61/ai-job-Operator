@@ -1,0 +1,33 @@
+apiVersion: ai.gpustack.io/v1alpha1
+kind: AIJob
+metadata:
+  name: gpu-blocker-a
+  namespace: default
+spec:
+  image: nvidia/cuda:12.4.1-base-ubuntu22.04
+  command: ["/bin/bash", "-c"]
+  args: ["echo blocker-a-started; nvidia-smi; sleep 600"]
+  gpu: 1
+  priority: normal
+  runtimeClassName: nvidia
+  ownership:
+    owner: demo-user
+    team: platform
+    project: priority-demo
+---
+apiVersion: ai.gpustack.io/v1alpha1
+kind: AIJob
+metadata:
+  name: gpu-blocker-b
+  namespace: default
+spec:
+  image: nvidia/cuda:12.4.1-base-ubuntu22.04
+  command: ["/bin/bash", "-c"]
+  args: ["echo blocker-b-started; nvidia-smi; sleep 600"]
+  gpu: 1
+  priority: normal
+  runtimeClassName: nvidia
+  ownership:
+    owner: demo-user
+    team: platform
+    project: priority-demo

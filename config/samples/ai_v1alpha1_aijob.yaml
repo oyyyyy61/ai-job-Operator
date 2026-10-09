@@ -1,0 +1,27 @@
+apiVersion: ai.gpustack.io/v1alpha1
+kind: AIJob
+metadata:
+  name: cuda-smoke-high
+  namespace: default
+spec:
+  image: nvidia/cuda:12.4.1-base-ubuntu22.04
+  command:
+  - /bin/bash
+  - -c
+  args:
+  - nvidia-smi && sleep 20
+  gpu: 1
+  priority: high
+  queue: default
+  runtimeClassName: nvidia
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: "1"
+      memory: 512Mi
+  ownership:
+    owner: demo-user
+    team: platform
+    project: aijob-operator

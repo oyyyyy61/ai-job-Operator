@@ -1,0 +1,33 @@
+apiVersion: ai.gpustack.io/v1alpha1
+kind: AIJob
+metadata:
+  name: priority-demo-low
+  namespace: default
+spec:
+  image: nvidia/cuda:12.4.1-base-ubuntu22.04
+  command: ["/bin/bash", "-c"]
+  args: ["echo low-started; nvidia-smi; sleep 120"]
+  gpu: 1
+  priority: low
+  runtimeClassName: nvidia
+  ownership:
+    owner: demo-user
+    team: platform
+    project: priority-demo
+---
+apiVersion: ai.gpustack.io/v1alpha1
+kind: AIJob
+metadata:
+  name: priority-demo-high
+  namespace: default
+spec:
+  image: nvidia/cuda:12.4.1-base-ubuntu22.04
+  command: ["/bin/bash", "-c"]
+  args: ["echo high-started; nvidia-smi; sleep 120"]
+  gpu: 1
+  priority: high
+  runtimeClassName: nvidia
+  ownership:
+    owner: demo-user
+    team: platform
+    project: priority-demo
