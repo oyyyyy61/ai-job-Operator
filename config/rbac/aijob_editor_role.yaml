@@ -1,0 +1,24 @@
+# permissions for end users to edit aijobs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aijob-editor-role
+rules:
+- apiGroups:
+  - ai.gpustack.io
+  resources:
+  - aijobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ai.gpustack.io
+  resources:
+  - aijobs/status
+  verbs:
+  - get

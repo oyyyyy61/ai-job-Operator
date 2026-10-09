@@ -1,0 +1,20 @@
+# permissions for end users to view aijobs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aijob-viewer-role
+rules:
+- apiGroups:
+  - ai.gpustack.io
+  resources:
+  - aijobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ai.gpustack.io
+  resources:
+  - aijobs/status
+  verbs:
+  - get
