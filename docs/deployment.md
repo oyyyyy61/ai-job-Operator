@@ -29,20 +29,20 @@ openssl version
 ## 2. 安装 Volcano
 
 ```bash
-./scripts/install-volcano.sh
+bash scripts/install-volcano.sh
 ```
 
 默认 `VOLCANO_REF` 固定为项目验证过的 commit。覆盖方式：
 
 ```bash
-VOLCANO_REF=<tag-or-commit> ./scripts/install-volcano.sh
-VOLCANO_MANIFEST=/absolute/path/volcano.yaml ./scripts/install-volcano.sh
+VOLCANO_REF=<tag-or-commit> bash scripts/install-volcano.sh
+VOLCANO_MANIFEST=/absolute/path/volcano.yaml bash scripts/install-volcano.sh
 ```
 
 对重要集群增加 API Server 白名单：
 
 ```bash
-EXPECTED_API_SERVERS=https://api.example.com:6443 ./scripts/install-volcano.sh
+EXPECTED_API_SERVERS=https://api.example.com:6443 bash scripts/install-volcano.sh
 ```
 
 脚本会等待 PodGroup CRD 建立，并检查 scheduler、controllers、admission 三个 Deployment
@@ -83,7 +83,7 @@ http: server gave HTTP response to HTTPS client
 通用部署：
 
 ```bash
-IMAGE="$IMG" ./scripts/deploy.sh
+IMAGE="$IMG" bash scripts/deploy.sh
 ```
 
 带目标保护和 GPU 节点预检的部署：
@@ -94,7 +94,7 @@ EXPECTED_NODES=gpu-node-14,gpu-node-15,gpustack-cp01,gpustack-cp02 \
 GPU_NODES=gpu-node-14,gpu-node-15 \
 MIN_GPU_PER_NODE=1 \
 IMAGE="$IMG" \
-./scripts/deploy.sh
+bash scripts/deploy.sh
 ```
 
 参数说明：
@@ -123,7 +123,7 @@ IMAGE="$IMG" \
 ## 5. 验证
 
 ```bash
-./scripts/verify.sh
+bash scripts/verify.sh
 ```
 
 验证范围包括：
@@ -152,8 +152,8 @@ kubectl -n volcano-system get deployment,pod
 export IMG=registry.example.com/platform/aijob-operator:v0.1.1
 make docker-build IMG="$IMG"
 make docker-push IMG="$IMG"
-IMAGE="$IMG" ./scripts/deploy.sh
-./scripts/verify.sh
+IMAGE="$IMG" bash scripts/deploy.sh
+bash scripts/verify.sh
 ```
 
 部署脚本会重新生成 Webhook 证书。持续运行环境建议接入 cert-manager 或证书轮换控制器。

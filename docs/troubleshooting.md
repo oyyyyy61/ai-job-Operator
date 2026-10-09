@@ -3,7 +3,7 @@
 ## 快速检查
 
 ```bash
-./scripts/verify.sh
+bash scripts/verify.sh
 
 kubectl get crd aijobs.ai.gpustack.io podgroups.scheduling.volcano.sh
 kubectl -n aijob-operator-system get deployment,pod,service,endpointslice
@@ -65,7 +65,7 @@ kubectl -n aijob-operator-system logs \
 重新运行部署脚本可以重新生成证书并更新 CA：
 
 ```bash
-IMAGE=<current-image> ./scripts/deploy.sh
+IMAGE=<current-image> bash scripts/deploy.sh
 ```
 
 ## AIJob 一直 Pending
