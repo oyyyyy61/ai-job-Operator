@@ -77,14 +77,14 @@ make test
 ### 3. 安装 Volcano
 
 ```bash
-./scripts/install-volcano.sh
+bash scripts/install-volcano.sh
 ```
 
 脚本默认使用与 Kubernetes 1.36 验证过的 Volcano commit。也可以显式指定版本或本地清单：
 
 ```bash
-VOLCANO_REF=<reviewed-commit-or-tag> ./scripts/install-volcano.sh
-VOLCANO_MANIFEST=/path/to/volcano.yaml ./scripts/install-volcano.sh
+VOLCANO_REF=<reviewed-commit-or-tag> bash scripts/install-volcano.sh
+VOLCANO_MANIFEST=/path/to/volcano.yaml bash scripts/install-volcano.sh
 ```
 
 ### 4. 构建并推送 Operator 镜像
@@ -101,8 +101,8 @@ make docker-push IMG="$IMG"
 ### 5. 部署并验证
 
 ```bash
-IMAGE="$IMG" ./scripts/deploy.sh
-./scripts/verify.sh
+IMAGE="$IMG" bash scripts/deploy.sh
+bash scripts/verify.sh
 ```
 
 可以通过环境变量增加目标集群保护和节点检查：
@@ -113,7 +113,7 @@ EXPECTED_NODES=gpu-node-14,gpu-node-15,gpustack-cp01,gpustack-cp02 \
 GPU_NODES=gpu-node-14,gpu-node-15 \
 MIN_GPU_PER_NODE=1 \
 IMAGE="$IMG" \
-./scripts/deploy.sh
+bash scripts/deploy.sh
 ```
 
 `EXPECTED_API_SERVERS`、`EXPECTED_NODES` 和 `GPU_NODES` 都是可选参数。部署脚本会安装

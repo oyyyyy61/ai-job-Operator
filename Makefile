@@ -53,8 +53,8 @@ install: manifests ## Install CRD and PriorityClasses into the active cluster.
 
 .PHONY: deploy
 deploy: manifests ## Deploy with IMAGE=$(IMG), including webhook TLS.
-	IMAGE=$(IMG) ./scripts/deploy.sh
+	IMAGE=$(IMG) bash scripts/deploy.sh
 
 .PHONY: verify
 verify: ## Verify the deployment in the active cluster.
-	./scripts/verify.sh
+	bash scripts/verify.sh
