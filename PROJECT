@@ -1,0 +1,16 @@
+domain: gpustack.io
+layout:
+- go.kubebuilder.io/v3
+projectName: aijob-operator
+repo: github.com/oyyyyy61/ai-job-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: gpustack.io
+  group: ai
+  kind: AIJob
+  path: github.com/oyyyyy61/ai-job-operator/api/v1alpha1
+  version: v1alpha1
+version: "3"
