@@ -1,0 +1,26 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: ai-low
+value: 100
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: Low-priority, interruptible AI batch work.
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: ai-normal
+value: 1000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: Default priority for AIJob workloads.
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: ai-high
+value: 10000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: High-priority AI work scheduled ahead of lower-priority jobs.
